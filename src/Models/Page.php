@@ -16,6 +16,8 @@ use Illuminate\Support\Carbon;
  * @property string $body
  * @property string $status
  * @property Carbon|null $published_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  */
 #[Fillable(['title', 'slug', 'excerpt', 'body', 'status', 'published_at'])]
 class Page extends Model

@@ -8,6 +8,7 @@ use Inupress\Contracts\HookRegistry;
 use Inupress\Contracts\ProvidesFilament;
 use Inupress\Pages\Filament\PagesFilamentPlugin;
 use Inupress\Pages\Support\MenuLinkSource;
+use Inupress\Pages\Support\SeoUrlSource;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -24,6 +25,8 @@ final class PagesServiceProvider extends PackageServiceProvider implements Provi
     {
         // Pages show up in the menu builder when inupress/menus is installed.
         MenuLinkSource::register($this->app->make(HookRegistry::class));
+        // The published ones show up in the sitemap when inupress/seo is installed.
+        SeoUrlSource::register($this->app->make(HookRegistry::class));
     }
 
     public function configurePackage(Package $package): void
