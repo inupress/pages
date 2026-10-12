@@ -8,7 +8,6 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -18,6 +17,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Inupress\Core\Support\ContentEditor;
 use Inupress\Pages\Filament\PageResource\Pages\CreatePage;
 use Inupress\Pages\Filament\PageResource\Pages\EditPage;
 use Inupress\Pages\Filament\PageResource\Pages\ListPages;
@@ -49,7 +49,7 @@ final class PageResource extends Resource
             Textarea::make('excerpt')
                 ->rows(2)
                 ->maxLength(500),
-            RichEditor::make('body')
+            ContentEditor::field('body', ContentEditor::SOURCE_PAGES)
                 ->required()
                 ->columnSpanFull(),
             Select::make('status')
